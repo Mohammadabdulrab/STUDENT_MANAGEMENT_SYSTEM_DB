@@ -37,4 +37,9 @@ public class StudentService {
          return student;
     }
 
+    public String deleteStudentById(int studentId){
+        studentRepository.deleteById(studentId);
+        return "Student with ID :"+studentId+"got deleted";
+    }
+
 }
