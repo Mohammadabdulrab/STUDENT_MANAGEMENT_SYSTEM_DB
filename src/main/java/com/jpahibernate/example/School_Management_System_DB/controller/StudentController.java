@@ -4,10 +4,7 @@ package com.jpahibernate.example.School_Management_System_DB.controller;
 import com.jpahibernate.example.School_Management_System_DB.model.Student;
 import com.jpahibernate.example.School_Management_System_DB.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +28,17 @@ public class StudentController {
     public String addAllStudents(@RequestBody List<Student> studentList){
         String response =studentService.saveStudents(studentList);
         return response;
+    }
+
+    @GetMapping("/findAll")
+    public List<Student> findAllStudent(){
+        List<Student> studentList=studentService.getAllStudent();
+        return studentList;
+    }
+
+    @GetMapping("/findByID/{studentid}")
+    public Student findStudentById(@PathVariable("studentid") int studentID){
+        Student student=studentService.getStudentById(studentID);
+        return student;
     }
 }

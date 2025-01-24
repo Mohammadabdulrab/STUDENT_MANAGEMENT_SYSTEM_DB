@@ -25,8 +25,16 @@ public class StudentService {
     public String saveStudents(List<Student> studentList){
         studentRepository.saveAll(studentList);
         return "All students details saved successfully";
-
     }
 
+    public List<Student> getAllStudent(){
+        List<Student> studentList=studentRepository.findAll();
+        return studentList;
+    }
+
+    public Student getStudentById(int studentId){
+        Student student=studentRepository.findById(studentId).get();
+         return student;
+    }
 
 }
