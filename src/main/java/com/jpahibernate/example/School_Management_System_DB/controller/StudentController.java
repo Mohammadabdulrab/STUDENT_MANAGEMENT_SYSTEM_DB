@@ -59,4 +59,11 @@ public class StudentController {
     }
 
 
+    @PatchMapping("/updateUsingPatch/{studentid}")
+    public String updateStudentUsingPatch(@PathVariable("studentid") int studentId, @RequestParam("grade") String grade, @RequestParam("dob") String dob, @RequestParam("name") String name){
+        String response = studentService.updateStudentUsingPatch(studentId,grade,dob,name);
+        return response;
+    }
+
+
 }

@@ -58,4 +58,22 @@ public class StudentService {
         }
     }
 
+
+    public String updateStudentUsingPatch(int studentId, String grade,String dob,String name){
+        //first find student with id
+        //if student present , update it
+        //else no need to update
+
+        Student student=getStudentById(studentId);
+        if(student !=null){
+            student.setGrade(grade);
+            student.setDob(dob);
+            student.setName(name);
+            studentRepository.save(student);
+            return "Student updated using patch";
+        }
+        else{
+            return "Student not found with id : "+studentId;
+        }
+    }
 }
