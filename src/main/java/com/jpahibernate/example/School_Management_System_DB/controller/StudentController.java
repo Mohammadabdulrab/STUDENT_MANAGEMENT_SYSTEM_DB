@@ -48,4 +48,15 @@ public class StudentController {
         String msg=studentService.deleteStudentById(studentId);
         return msg;
     }
+
+    //put-> we update whole fields(like whole object)
+    //patch-> we update only specific fields
+
+    @PutMapping("/updateWithPut/{studentid}")
+    public String updateStudentWithPut(@PathVariable("studentid") int studentId, @RequestBody Student student){
+        String response = studentService.updateStudentWithPut(studentId,student);
+        return response;
+    }
+
+
 }

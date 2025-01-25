@@ -42,4 +42,20 @@ public class StudentService {
         return "Student with ID :"+studentId+"got deleted";
     }
 
+
+    public String updateStudentWithPut(int studentId, Student newStudentRequest){
+        //first find student with id
+        //if student present , update it
+        //else no need to update
+
+        Student student=getStudentById(studentId);
+        if(student !=null){
+            studentRepository.save(newStudentRequest);
+            return "Student updated";
+        }
+        else{
+            return "Student not found with id : "+studentId;
+        }
+    }
+
 }
